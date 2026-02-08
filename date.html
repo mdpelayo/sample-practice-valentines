@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blooming Flower with Stem and Leaves</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top, #e6f7ff, #ffffff);
+    font-family: 'Comic Sans MS', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: #2e7d32;
+    overflow: hidden;
+  }
+
+  h1 {
+    margin-bottom: 40px;
+    color: #d32f2f;
+    font-size: 2.8rem;
+  }
+
+  .flower-container {
+    position: relative;
+    width: 200px;
+    height: 300px;
+  }
+
+  /* Stem */
+  .stem {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 0;
+    background: linear-gradient(to top, #2e7d32, #81c784);
+    border-radius: 4px;
+    animation: growStem 3s forwards;
+  }
+
+  @keyframes growStem {
+    to {
+      height: 180px;
+    }
+  }
+
+  /* Leaves */
+  .leaf {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    background: linear-gradient(45deg, #4caf50, #81c784);
+    border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+    opacity: 0;
+    transform-origin: center;
+    animation: showLeaf 3s forwards;
+  }
+
+  .leaf.left {
+    bottom: 70px;
+    left: calc(50% - 40px);
+    transform: rotate(-30deg) scale(0);
+    animation-delay: 2.5s;
+  }
+
+  .leaf.right {
+    bottom: 120px;
+    left: calc(50% + 10px);
+    transform: rotate(30deg) scale(0);
+    animation-delay: 2.7s;
+  }
+
+  @keyframes showLeaf {
+    to {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  /* Flower */
+  .flower {
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 160px;
+  }
+
+  .petal {
+    position: absolute;
+    width: 60px;
+    height: 90px;
+    background: #ff6f91;
+    border-radius: 50% 50% 45% 45%;
+    top: 35px;
+    left: 50px;
+    transform-origin: bottom center;
+    opacity: 0;
+    animation: bloom 4s ease-in-out forwards;
+  }
+
+  /* Petal rotations and delays */
+  .petal:nth-child(1) { --angle: 0deg; animation-delay: 3.3s; }
+  .petal:nth-child(2) { --angle: 45deg; animation-delay: 3.5s; }
+  .petal:nth-child(3) { --angle: 90deg; animation-delay: 3.7s; }
+  .petal:nth-child(4) { --angle: 135deg; animation-delay: 3.9s; }
+  .petal:nth-child(5) { --angle: 180deg; animation-delay: 4.1s; }
+  .petal:nth-child(6) { --angle: 225deg; animation-delay: 4.3s; }
+  .petal:nth-child(7) { --angle: 270deg; animation-delay: 4.5s; }
+  .petal:nth-child(8) { --angle: 315deg; animation-delay: 4.7s; }
+
+  @keyframes bloom {
+    0% {
+      opacity: 0;
+      transform: rotate(var(--angle)) scaleY(0.1) scaleX(0.1);
+    }
+    60% {
+      opacity: 1;
+      transform: rotate(var(--angle)) scaleY(0.7) scaleX(0.7);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(var(--angle)) scaleY(1) scaleX(1);
+    }
+  }
+
+  .center {
+    position: absolute;
+    top: 65px;
+    left: 65px;
+    width: 30px;
+    height: 30px;
+    background: #d81b60;
+    border-radius: 50%;
+    opacity: 0;
+    animation: centerGrow 3s ease forwards 5.2s;
+  }
+
+  @keyframes centerGrow {
+    0% { transform: scale(0.1); opacity: 0; }
+    60% { transform: scale(0.7); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<h1>See you on our date! 💖</h1>
+
+<div class="flower-container">
+  <div class="stem"></div>
+  <div class="leaf left"></div>
+  <div class="leaf right"></div>
+  <div class="flower">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="center"></div>
+  </div>
+</div>
+
+</body>
+</html>
